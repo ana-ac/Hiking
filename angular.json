@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "projects": {
+    "hiking-app": {
+      "projectType": "application",
+      "root": "apps/hiking-app",
+      "sourceRoot": "apps/hiking-app/src",
+      "prefix": "hiking",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/hiking-app",
+            "index": "apps/hiking-app/src/index.html",
+            "main": "apps/hiking-app/src/main.ts",
+            "polyfills": "apps/hiking-app/src/polyfills.ts",
+            "tsConfig": "apps/hiking-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/hiking-app/src/favicon.ico",
+              "apps/hiking-app/src/assets"
+            ],
+            "styles": ["apps/hiking-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/hiking-app/src/environments/environment.ts",
+                  "with": "apps/hiking-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "hiking-app:build:production"
+            },
+            "development": {
+              "browserTarget": "hiking-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hiking-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/hiking-app/src/**/*.ts",
+              "apps/hiking-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/hiking-app"],
+          "options": {
+            "jestConfig": "apps/hiking-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "hiking-app-e2e": {
+      "root": "apps/hiking-app-e2e",
+      "sourceRoot": "apps/hiking-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/hiking-app-e2e/cypress.json",
+            "devServerTarget": "hiking-app:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "hiking-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/hiking-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["hiking-app"]
+    }
+  }
+}
