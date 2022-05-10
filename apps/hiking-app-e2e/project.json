@@ -1,0 +1,27 @@
+{
+  "sourceRoot": "apps/hiking-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/hiking-app-e2e/cypress.json",
+        "devServerTarget": "hiking-app:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "hiking-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hiking-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["hiking-app"]
+}

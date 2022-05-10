@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "hiking-app": "apps/hiking-app",
+    "hiking-app-e2e": "apps/hiking-app-e2e"
+  }
+}
