@@ -17,7 +17,7 @@
           "apps/hiking-app/src/favicon.ico",
           "apps/hiking-app/src/assets"
         ],
-        "styles": ["apps/hiking-app/src/styles.scss"],
+        "styles": ["apps/hiking-app/src/sass/styles.scss"],
         "scripts": []
       },
       "configurations": {

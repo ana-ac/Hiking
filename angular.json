@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "components": "libs/components",
     "hiking-app": "apps/hiking-app",
     "hiking-app-e2e": "apps/hiking-app-e2e"
   }
